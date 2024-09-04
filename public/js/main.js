@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    
+
     // Dropdown on mouse hover
     $(document).ready(function () {
         function toggleNavbarMethod() {
@@ -17,8 +17,8 @@
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
@@ -99,6 +99,28 @@
         }
         button.parent().parent().find('input').val(newVal);
     });
-    
+
 })(jQuery);
+
+// Using jQuery for simplicity
+$(document).on('submit', '.delete-button', function(e) {
+    e.preventDefault();
+
+    let form = $(this);
+    let productRow = form.closest('tr');
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        data: form.serialize(),
+        success: function(response) {
+            productRow.remove();
+            alert(response.message);
+        },
+        error: function(xhr) {
+            alert('Something went wrong.');
+        }
+    });
+});
+
 

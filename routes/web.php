@@ -23,7 +23,10 @@ Route::get('/shop/{id}', function ($id) {
 });
 
 
-Route::post('/carts', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
+Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
+Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
+Route::get('/carts/{id}', [CartController::class, 'delete'])->name('carts.delete');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -100,21 +100,11 @@
             </div>
             <div class="d-flex align-items-center mb-4 pt-2">
                 <div class="input-group quantity mr-3" style="width: 130px;">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-minus" >
-                        <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
+
                     <form action="{{url('carts')}}" method="post">
                         @csrf
-                    <input type="text" class="form-control bg-secondary text-center" name="quantity" value="1">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-plus">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                
+                        {{-- <input type="hidden" name="user_id" value="{{Auth::user()->id}}"> --}}
+                    <input type="number" class="form-control bg-secondary text-center mb-3" name="quantity">
                     <input type="hidden" name="product_id" value="{{$product->id}}">
                     <input type="hidden" name="name" value="{{$product->name}}">
                 <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
